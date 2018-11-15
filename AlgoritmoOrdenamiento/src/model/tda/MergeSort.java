@@ -17,7 +17,7 @@ public class MergeSort {
         if(array.size() <= 1){
             return array;
         }
-            ArrayList arrayOrdenado = new ArrayList();
+            ArrayList MergedList = new ArrayList();
 
             ArrayList izq = new ArrayList();
             ArrayList der = new ArrayList();
@@ -33,8 +33,8 @@ public class MergeSort {
             izq = metodoMergeSort(izq); 
             der = metodoMergeSort(der);
             //combines the lists
-            arrayOrdenado = merge(izq, der);
-            return arrayOrdenado;
+            MergedList = merge(izq, der);
+            return MergedList;
     }
     public static ArrayList merge(ArrayList izq, ArrayList der)
     {

@@ -36,7 +36,7 @@ public class QuickSort {
                         QuickedList.set(izq, aux);
                     }
                     if(izq==der){
-                        //QuickSort(array,i,izq);
+                        //metodoQuickSort(array,i,izq);
                         metodoQuickSort(QuickedList,i+1,d);
                     }
                 }            
