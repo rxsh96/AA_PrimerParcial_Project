@@ -5,8 +5,10 @@
  */
 package main;
 
-import model.tda.ArrayList;
-
+import java.util.ArrayList;
+import static model.tda.InsertionSort.metodoInsertionSort;
+import static model.tda.MergeSort.metodoMergeSort;
+import static model.tda.QuickSort.metodoQuickSort;
 /**
  *
  * @author rxsh96
@@ -20,23 +22,34 @@ public class Main {
         // TODO code application logic here
     
         System.out.println("CREANDO EL ARRAYLIST");
-        ArrayList<Integer> a = new ArrayList<>();
-        System.out.println(a);
+        ArrayList listaDesordenada = new ArrayList();
+        ArrayList listaOrdenada = new ArrayList();
+        System.out.println(listaDesordenada);
         
         System.out.println("LLENANDO EL ARRAYLIST");
-        a.addFirst(100);
-        a.addFirst(0);
-        a.addFirst(1);
-        a.addFirst(5);
-        a.addFirst(80);
-        a.addFirst(6);
-        a.addFirst(200);
-        a.addFirst(55);
-        System.out.println(a);
+        listaDesordenada.add(100);
+        listaDesordenada.add(0);
+        listaDesordenada.add(1);
+        listaDesordenada.add(5);
+        listaDesordenada.add(80);
+        listaDesordenada.add(6);
+        listaDesordenada.add(200);
+        listaDesordenada.add(55);
+        
+        System.out.println(listaDesordenada);
+        System.out.print("\n");
         
         System.out.println("APLICANDO INSERTIONSORT");
-        a.insertionSort();
-        System.out.println(a);
+        listaOrdenada = metodoInsertionSort(listaDesordenada);
+        System.out.println(listaOrdenada);
+        
+        System.out.println("APLICANDO QUICKSORT");
+        listaOrdenada = metodoQuickSort(listaDesordenada, 0, listaDesordenada.size()-1);
+        System.out.println(listaOrdenada);
+        
+        System.out.println("APLICANDO MERGESORT");
+        listaOrdenada = metodoMergeSort(listaDesordenada);
+        System.out.println(listaOrdenada);
+        
     }
-    
 }
