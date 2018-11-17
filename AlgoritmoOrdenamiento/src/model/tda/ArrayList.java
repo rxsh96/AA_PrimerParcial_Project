@@ -243,6 +243,7 @@ public class ArrayList<E> implements List<E> {
         return elements;
     }
     
+    //METODOS PARA INSERTIONSORT
     public void insertionSort(){
         Integer key;
         int j;
@@ -256,6 +257,7 @@ public class ArrayList<E> implements List<E> {
             array[j+1] = (E)key;
         }
     }
+    //FIN METODOS INSERTIONSORT
     
     //METODOS PARA MERGESORT
     public void mergeSort(){
@@ -311,18 +313,18 @@ public class ArrayList<E> implements List<E> {
         quickSort(array, 0, efectivo-1);
     }
     
-    private void quickSort(E[] a, int low, int high){
-        if(low < high){ 
-            int partition = partition(a, low, high); 
-            quickSort(a, low, partition-1); 
-            quickSort(a, partition+1, high); 
+    private void quickSort(E[] a, int first, int last){
+        if(first < last){ 
+            int partition = partition(a, first, last); 
+            quickSort(a, first, partition-1); 
+            quickSort(a, partition+1, last); 
         } 
     }
         
-    int partition(E[] a, int low, int high){ 
-        int pivot = (Integer)a[high];  
-        int i = (low-1); 
-        for (int j = low; j < high; j++){
+    int partition(E[] a, int first, int last){ 
+        int pivot = (Integer)a[last];  
+        int i = (first-1); 
+        for (int j = first; j < last; j++){
             if ((Integer)a[j] <= pivot){ 
                 i++;  
                 E temp = a[i]; 
@@ -331,10 +333,32 @@ public class ArrayList<E> implements List<E> {
             } 
         } 
         E temp = a[i+1]; 
-        a[i+1] = a[high]; 
-        a[high] = temp; 
+        a[i+1] = a[last]; 
+        a[last] = temp; 
         return i+1; 
     }
     //FIN METODOS QUICKSORT
     
+    //METODOS STOOGESORT
+    public void stoogeSort(){
+        stoogeSort(array, 0, efectivo-1);
+    }
+    
+    private void stoogeSort(E[] a, int first, int last){
+        if (first >= last) {
+            return;
+        }
+        if ((Integer)a[first] > (Integer)a[last]) {
+            E temp = a[first];
+            a[first] = a[last];
+            a[last] = temp;
+        }
+        if ((last - first + 1) > 2) {
+            int temp = (last - first + 1)/3;
+            stoogeSort(a, first, last - temp);
+            stoogeSort(a, first + temp, last);
+            stoogeSort(a, first, last - temp);
+        }
+    } 
+    //FIN METODOS STOOGESORT
 }

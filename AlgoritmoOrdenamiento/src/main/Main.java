@@ -62,6 +62,20 @@ public class Main {
         quick.quickSort();
         System.out.println(quick);
         System.out.println("============================================");
+        System.out.println("");
+        System.out.println("============================================");
+        System.out.println("Creando ArrayList STOOGE");
+        ArrayList<Integer> stooge = new ArrayList<>();
+        System.out.println(stooge);
+        System.out.println("Ingresando Elementos Aleatorios al ArrayList STOOGE");
+        for (int i = 0; i < 20; i++) {
+            stooge.addFirst(r.nextInt(100));
+        }
+        System.out.println(stooge);
+        System.out.println("Probando StoogeSort");
+        stooge.stoogeSort();
+        System.out.println(stooge);
+        System.out.println("============================================");
         
     }
 }
