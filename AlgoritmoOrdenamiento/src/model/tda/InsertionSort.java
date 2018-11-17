@@ -19,7 +19,6 @@ public class InsertionSort {
         int aux;
         int contador1;
         int contador2;        
-
         for(contador1=1; contador1<InsertionedList.size();contador1++){
             aux = (Integer)InsertionedList.get(contador1);
             for(contador2=contador1-1;contador2>=0 && (Integer)InsertionedList.get(contador2)>aux;contador2--){
@@ -28,5 +27,5 @@ public class InsertionSort {
             }
         }
         return InsertionedList;
-    }     
+    }    
 }
