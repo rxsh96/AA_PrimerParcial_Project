@@ -66,22 +66,25 @@ public class IOFile {
         ArrayList<Integer> array = null;
         if (!file.exists()) {
             System.out.println("FILE NOT FOUND");
+            return array;
         }
-        int fileLines = fileLines(file);
-        if(fileLines < amount){
-            amount = fileLines;
-        }
-        try (Scanner lector = new Scanner(file)){
-            array = new ArrayList<>();
-            for (int i = 0; i < amount; i++) {
-                array.addFirst(Integer.parseInt(lector.nextLine()));
+        else{
+            int fileLines = fileLines(file);
+            if(fileLines < amount){
+                amount = fileLines;
             }
-            lector.close();
-        } 
-        catch (FileNotFoundException ex){
-            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
+            try (Scanner lector = new Scanner(file)){
+                array = new ArrayList<>();
+                for (int i = 0; i < amount; i++) {
+                    array.addFirst(Integer.parseInt(lector.nextLine()));
+                }
+                lector.close();
+            } 
+            catch (FileNotFoundException ex){
+                Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return array;
         }
-        return array;
     }
     
     /**
@@ -93,19 +96,22 @@ public class IOFile {
         File file = new File(FILEPATH+filename);
         ArrayList<Integer> array = null;
         if (!file.exists()) {
-            System.out.println("El archivo no existe");
+            System.out.println("FILE NOT FOUND");
+            return array;
         }
-        try (Scanner lector = new Scanner(file)){
-            array = new ArrayList<>();
-            while(lector.hasNextLine()){
-                array.addFirst(Integer.parseInt(lector.nextLine()));
+        else{
+            try (Scanner lector = new Scanner(file)){
+                array = new ArrayList<>();
+                while(lector.hasNextLine()){
+                    array.addFirst(Integer.parseInt(lector.nextLine()));
+                }
+                lector.close();
+            } 
+            catch (FileNotFoundException ex){
+                Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
             }
-            lector.close();
-        } 
-        catch (FileNotFoundException ex){
-            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
+            return array;
         }
-        return array;
     }
     
     /**

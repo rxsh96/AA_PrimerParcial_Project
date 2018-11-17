@@ -95,11 +95,17 @@ public class Main {
         ArrayList<Integer> array4 = IOFile.readFile("prueba3.txt", 15); //GUARDO LAS PRIMERAS 15 ...
         ArrayList<Integer> array5 = IOFile.readFile("prueba3.txt", 60); //COMO 60 > A LA CANTIDAD DE ELEMENTOS DEL ARRAY, SIMPLEMENTE SE GUARDAN TODOS LOS ELEMENTOS DEL ARCHIVO AL ARRAY
         
+        //ARCHIVOS QUE NO EXISTEN
+        ArrayList<Integer> array6 = IOFile.readFile("prueba100.txt");
+        ArrayList<Integer> array7 = IOFile.readFile("prueba1100.txt", 50);
+        
         System.out.println(array1);
         System.out.println(array2);
         System.out.println(array3);
         System.out.println(array4);
         System.out.println(array5);
+        System.out.println(array6);
+        System.out.println(array7);
         
     }
 }
