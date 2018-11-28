@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuViewController">
+   <children>
+      <AnchorPane fx:id="pSummary" layoutX="150.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #AAF683;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="83.0" prefWidth="138.0" text="Summary" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="bShowGraphic" layoutX="167.0" layoutY="336.0" onAction="#showGraphic" prefHeight="50.0" prefWidth="116.0" style="-fx-background-color: #3E363F;" text="Show Graphic" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pGenerateData" layoutX="150.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #FFD97D;">
+         <children>
+            <VBox alignment="CENTER" layoutX="75.0" layoutY="86.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="300.0" spacing="25.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="25.0" prefWidth="100.0" text="File Name:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="tGenerateFileName" alignment="CENTER" prefWidth="150.0" promptText="numbers.txt" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="300.0" spacing="25.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="25.0" prefWidth="100.0" text="Since:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="tSince" alignment="CENTER" prefWidth="150.0" promptText="20" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="100.0" spacing="25.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="25.0" prefWidth="100.0" text="Until:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="tUntil" alignment="CENTER" prefWidth="150.0" promptText="100" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="100.0" spacing="25.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="25.0" prefWidth="100.0" text="# Elements:" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="tGenerateElementNumbers" alignment="CENTER" prefWidth="150.0" promptText="250" />
+                     </children>
+                  </HBox>
+                  <JFXButton fx:id="bGenerateFile" onAction="#generateFile" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Generate" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="lGenerateMessage" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label layoutX="25.0" layoutY="20.0" prefHeight="60.0" prefWidth="120.0" text="Generate Data" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pMenu" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: #3E363F;">
+         <children>
+            <Label layoutX="17.0" layoutY="14.0" prefHeight="63.0" prefWidth="116.0" text="Algorithm Comparator" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="bHome" layoutY="91.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Home" textFill="WHITE" />
+            <JFXButton fx:id="bSelectAlgorithm" layoutY="141.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Select Algorithm" textFill="WHITE" />
+            <JFXButton fx:id="bGenerateData" layoutY="191.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Generate Data" textFill="WHITE" />
+            <JFXButton fx:id="bSelectData" layoutY="241.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Select Data" textFill="WHITE" />
+            <JFXButton fx:id="bExit" layoutY="336.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Exit" textFill="WHITE" />
+            <JFXButton fx:id="bSummary" layoutY="291.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="150.0" text="Summary" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pSelectData" layoutX="150.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #AAF683;">
+         <children>
+            <JFXButton fx:id="bSelectFile" layoutX="150.0" layoutY="200.0" onAction="#fileChooser" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Select Data File" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="tElementNumber" alignment="CENTER" layoutX="180.0" layoutY="135.0" prefHeight="50.0" prefWidth="90.0" promptText="Number of Elements" style="-fx-background-color: #AAF683;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label fx:id="lSelectFileMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="262.0" prefHeight="50.0" prefWidth="250.0" wrapText="true" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="20.0" prefHeight="60.0" prefWidth="120.0" text="Select Data" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="pAlgorithm" layoutX="150.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #60D394;">
+         <children>
+            <VBox alignment="CENTER" layoutX="150.0" layoutY="97.0" prefHeight="269.0" prefWidth="150.0" spacing="10.0">
+               <children>
+                  <JFXCheckBox fx:id="cbInsertionSort" prefHeight="50.0" prefWidth="200.0" selected="true" text="Insertion Sort">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="cbMergeSort" layoutX="10.0" layoutY="120.0" prefHeight="50.0" prefWidth="200.0" selected="true" text="Merge Sort">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="cbQuickSort" layoutX="10.0" layoutY="150.0" prefHeight="50.0" prefWidth="200.0" selected="true" text="Quick Sort">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="cbStoogeSort" layoutX="10.0" layoutY="180.0" prefHeight="50.0" prefWidth="200.0" selected="true" text="Stooge Sort">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+               </children>
+            </VBox>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="83.0" prefWidth="138.0" text="Select Algorithm" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="pHome" layoutX="150.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #EE6055;">
+         <children>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="25.0" prefHeight="60.0" prefWidth="120.0" text="Home" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="51.0" layoutY="93.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Select Algorithm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="251.0" layoutY="93.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Generate Data" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="51.0" layoutY="273.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Select Data" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="251.0" layoutY="273.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #3E363F;" text="Summary" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXTextArea editable="false" layoutX="31.0" layoutY="150.0" mouseTransparent="true" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #E3625D;" text="- Insertion Sort&#10;- Merge Sort&#10;- Quick Sort&#10;- Stooge Sort&#10;By default, all of them are selected." />
+            <JFXTextArea editable="false" layoutX="237.0" layoutY="150.0" mouseTransparent="true" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #E3625D;" text="Generate a txt File with random numbers for the sorting algorithm comparison." />
+            <JFXTextArea editable="false" layoutX="31.0" layoutY="336.0" mouseTransparent="true" prefHeight="33.0" prefWidth="190.0" style="-fx-background-color: #E3625D;" text="Select the data file." />
+            <JFXTextArea editable="false" layoutX="237.0" layoutY="336.0" mouseTransparent="true" prefHeight="33.0" prefWidth="190.0" style="-fx-background-color: #E3625D;" text="Summary of options." />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
