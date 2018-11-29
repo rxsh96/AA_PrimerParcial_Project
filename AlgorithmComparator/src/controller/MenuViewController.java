@@ -29,6 +29,7 @@ import model.Constants;
 import model.NumberGenerator;
 import model.XYLineChart;
 import model.io.IOFile;
+import static model.io.IOFile.FILEPATH;
 import model.tda.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -123,6 +124,13 @@ public class MenuViewController implements Initializable {
             pSummary.toFront();
         }
         else if(event.getSource() == bExit){
+            File fichero = new File(FILEPATH+"Score.txt");
+            if (!fichero.exists()) {
+                System.out.println("El archivo data no existe.");
+            } else {
+                fichero.delete();
+                System.out.println("El archivo data fue eliminado.");
+            }
             System.exit(0);
         }
     }
@@ -239,12 +247,8 @@ public class MenuViewController implements Initializable {
                 TFinSto = System.nanoTime();
                 tiempoSto = TFinSto - TInicioSto;
                 stooge.add(nelement,tiempoSto);
-            }
-            double t1 = TimeUnit.MILLISECONDS.convert(tiempoIns, TimeUnit.NANOSECONDS);  
-            double t2 = TimeUnit.MILLISECONDS.convert(tiempoQui, TimeUnit.NANOSECONDS);  
-            double t3 = TimeUnit.MILLISECONDS.convert(tiempoMer, TimeUnit.NANOSECONDS);  
-            double t4 = TimeUnit.MILLISECONDS.convert(tiempoSto, TimeUnit.NANOSECONDS);  
-            IOFile.generateScore(tamanoAUsar, nelement,t1,t2,t3,t4);
+            } 
+            IOFile.generateScore(tamanoAUsar, nelement,tiempoIns,tiempoQui,tiempoMer,tiempoSto);
         }
         
         dataset.addSeries(insertion);

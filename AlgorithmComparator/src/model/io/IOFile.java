@@ -70,19 +70,19 @@ public class IOFile {
             }
             try(PrintWriter printW = new PrintWriter(writer)){
                 if (file.length()==0){
-                    printW.print("n" + "\t" + "Insertion" + "\t" + "Quick" + "\t" + "Merge" + "\t");
+                    printW.print("n" + "\t" + "Insertion" + "\t" + "Quick" + "\t\t" + "Merge" + "\t\t");
                     printW.println("Stooge");
-                    printW.print(nelement + "\t");
-                    printW.print(tiempo1 + "\t\t");
-                    printW.print(tiempo2 + "\t");
-                    printW.print(tiempo3 + "\t");
-                    printW.println(tiempo4);
+                    printW.print(nelement);
+                    printW.print("\t"+tiempo1+"\t");
+                    printW.print("\t"+tiempo2+"\t");
+                    printW.print("\t"+tiempo3+"\t");
+                    printW.println("\t"+tiempo4);
                 }else{
-                    printW.print(nelement + "\t");
-                    printW.print(tiempo1 + "\t\t");
-                    printW.print(tiempo2 + "\t");
-                    printW.print(tiempo3 + "\t");
-                    printW.println(tiempo4);                   
+                    printW.print(nelement);
+                    printW.print("\t"+tiempo1+"\t");
+                    printW.print("\t"+tiempo2+"\t");
+                    printW.print("\t"+tiempo3+"\t");
+                    printW.println("\t"+tiempo4);                   
                 }
                 writer.close();
             }
