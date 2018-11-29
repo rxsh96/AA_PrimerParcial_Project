@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -182,7 +182,7 @@ public class MenuViewController implements Initializable {
             System.out.println(e.toString());
         }
        
-        //FIN DE CARGAR ARCHIVO EN UN ARRALIST
+        //FIN DE CARGAR ARCHIVO EN UN ARRAYLIST
         
         //CREACIÓN LAS COORDENADAS XY Y APLICANDO ALGORITMOS
         XYSeriesCollection dataset = new XYSeriesCollection();
