@@ -58,6 +58,42 @@ public class IOFile {
         return false;
     }
     
+    public static boolean generateScore(int tamano, int nelement, double tiempo1, double tiempo2, double tiempo3, double tiempo4){
+        File file = new File(FILEPATH+"Score.txt");
+        try {
+            FileWriter writer;
+            if (file.exists()){
+                writer = new FileWriter(file, true);
+            } 
+            else{
+                writer = new FileWriter(file);
+            }
+            try(PrintWriter printW = new PrintWriter(writer)){
+                if (file.length()==0){
+                    printW.print("n" + "\t" + "Insertion" + "\t" + "Quick" + "\t" + "Merge" + "\t");
+                    printW.println("Stooge");
+                    printW.print(nelement + "\t");
+                    printW.print(tiempo1 + "\t\t");
+                    printW.print(tiempo2 + "\t");
+                    printW.print(tiempo3 + "\t");
+                    printW.println(tiempo4);
+                }else{
+                    printW.print(nelement + "\t");
+                    printW.print(tiempo1 + "\t\t");
+                    printW.print(tiempo2 + "\t");
+                    printW.print(tiempo3 + "\t");
+                    printW.println(tiempo4);                   
+                }
+                writer.close();
+            }
+            return true;
+        } 
+        catch(IOException ex){
+            Logger.getLogger(IOFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     /**
      * Método que lee las líneas de un archivo y almacena el contenido en un ArrayList.
      * @param filename, nombre del archivo.

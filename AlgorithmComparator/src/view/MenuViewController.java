@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -191,10 +192,10 @@ public class MenuViewController implements Initializable {
         XYSeries merge = new XYSeries("MergeSort");
         XYSeries stooge = new XYSeries("StoogeSort");
         
-        long TInicioIns, TFinIns, tiempoIns;
-        long TInicioQui, TFinQui, tiempoQui;
-        long TInicioMer, TFinMer, tiempoMer;
-        long TInicioSto, TFinSto, tiempoSto;
+        long TInicioIns=0, TFinIns=0, tiempoIns=0;
+        long TInicioQui=0, TFinQui=0, tiempoQui=0;
+        long TInicioMer=0, TFinMer=0, tiempoMer=0;
+        long TInicioSto=0, TFinSto=0, tiempoSto=0;
         
         int tamanoAUsar;
         
@@ -239,6 +240,11 @@ public class MenuViewController implements Initializable {
                 tiempoSto = TFinSto - TInicioSto;
                 stooge.add(nelement,tiempoSto);
             }
+            double t1 = TimeUnit.MILLISECONDS.convert(tiempoIns, TimeUnit.NANOSECONDS);  
+            double t2 = TimeUnit.MILLISECONDS.convert(tiempoQui, TimeUnit.NANOSECONDS);  
+            double t3 = TimeUnit.MILLISECONDS.convert(tiempoMer, TimeUnit.NANOSECONDS);  
+            double t4 = TimeUnit.MILLISECONDS.convert(tiempoSto, TimeUnit.NANOSECONDS);  
+            IOFile.generateScore(tamanoAUsar, nelement,t1,t2,t3,t4);
         }
         
         dataset.addSeries(insertion);
