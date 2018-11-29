@@ -35,7 +35,7 @@ public class IOFile {
      * @return true si el archivo se crea, false en caso de que no se cree el archivo.
      */
     public static boolean generateFile(String filename, NumberGenerator ng){
-        File file = new File(FILEPATH+filename);
+        File file = new File(FILEPATH+filename+".txt");
         try {
             FileWriter writer;
             if (file.exists()){

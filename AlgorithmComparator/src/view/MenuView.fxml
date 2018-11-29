@@ -37,7 +37,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="tGenerateFileName" alignment="CENTER" prefWidth="150.0" promptText="numbers.txt" />
+                        <JFXTextField fx:id="tGenerateFileName" alignment="CENTER" prefWidth="150.0" promptText="numbers" />
                      </children>
                   </HBox>
                   <HBox prefHeight="25.0" prefWidth="300.0" spacing="25.0">
