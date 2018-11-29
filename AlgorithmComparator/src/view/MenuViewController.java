@@ -180,8 +180,7 @@ public class MenuViewController implements Initializable {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        
-        
+       
         //FIN DE CARGAR ARCHIVO EN UN ARRALIST
         
         //CREACIÓN LAS COORDENADAS XY Y APLICANDO ALGORITMOS
@@ -199,7 +198,9 @@ public class MenuViewController implements Initializable {
         
         int tamanoAUsar;
         
-        if (Integer.parseInt(tElementNumber.getText())<0 || Integer.parseInt(tElementNumber.getText())>listaDesordenada.size()){
+        if ("".equals(tElementNumber.getText())){
+            tamanoAUsar = listaDesordenada.size();
+        }else if(Integer.parseInt(tElementNumber.getText())<0 || Integer.parseInt(tElementNumber.getText())>listaDesordenada.size()){
             tamanoAUsar = listaDesordenada.size();
         }else{
             tamanoAUsar = Integer.parseInt(tElementNumber.getText());
