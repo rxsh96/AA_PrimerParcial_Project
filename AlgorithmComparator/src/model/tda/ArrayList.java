@@ -167,12 +167,12 @@ public class ArrayList<E> implements List<E> {
     }
     
     @Override
-    public List<E> slicing(int inicio, int fin) {
+    public ArrayList<E> slicing(int inicio, int fin) {
         if(isEmpty()){
             return null;
         }
         else if(inicio >= 0 && fin < efectivo){
-            List<E> newArray = new ArrayList<>();
+            ArrayList<E> newArray = new ArrayList<>();
             for(int i = inicio ; i < fin ; i++){
                 newArray.addLast(array[i]);         
             }
@@ -241,6 +241,15 @@ public class ArrayList<E> implements List<E> {
         }
         elements += "]";
         return elements;
+    }
+    
+    public List<E> copyArray(){
+        E[] copy = array.clone();
+        List<E> listCopy = new ArrayList<>();
+        for (E e: copy){
+            listCopy.addFirst(e);
+        }
+        return listCopy;
     }
     
     //METODOS PARA INSERTIONSORT

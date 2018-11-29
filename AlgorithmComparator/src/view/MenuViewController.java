@@ -9,8 +9,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,9 +22,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import model.Constants;
 import model.NumberGenerator;
+import model.XYLineChart;
 import model.io.IOFile;
+import model.tda.ArrayList;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  * FXML Controller class
@@ -154,6 +162,96 @@ public class MenuViewController implements Initializable {
 
     @FXML
     private void showGraphic(ActionEvent event) {
+        
+        //CARGAR ARCHIVO EN UN ARRAYLIST
+        ArrayList<Integer> listaDesordenada = new ArrayList<>();
+        ArrayList<Integer> listaAUsar = new ArrayList<>();
+
+        int numeroEntero;
+        File f = new File(lSelectFileMessage.getText());
+
+        try  (Scanner entrada = new Scanner(f)) {
+            while (entrada.hasNextInt()) {
+                numeroEntero = entrada.nextInt(); 
+                listaDesordenada.addLast(numeroEntero);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.toString());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        
+        //FIN DE CARGAR ARCHIVO EN UN ARRALIST
+        
+        //CREACIÓN LAS COORDENADAS XY Y APLICANDO ALGORITMOS
+        XYSeriesCollection dataset = new XYSeriesCollection();
+
+        XYSeries insertion = new XYSeries("InsertionSort");
+        XYSeries quick = new XYSeries("QuickSort");
+        XYSeries merge = new XYSeries("MergeSort");
+        XYSeries stooge = new XYSeries("StoogeSort");
+        
+        long TInicioIns, TFinIns, tiempoIns;
+        long TInicioQui, TFinQui, tiempoQui;
+        long TInicioMer, TFinMer, tiempoMer;
+        long TInicioSto, TFinSto, tiempoSto;
+        
+        int tamanoAUsar;
+        
+        if (Integer.parseInt(tElementNumber.getText())<0 || Integer.parseInt(tElementNumber.getText())>listaDesordenada.size()){
+            tamanoAUsar = listaDesordenada.size();
+        }else{
+            tamanoAUsar = Integer.parseInt(tElementNumber.getText());
+        }
+        
+        for(int nelement =10; nelement <= tamanoAUsar; nelement+=10){;
+            if(cbInsertionSort.isSelected()){
+                listaAUsar = listaDesordenada.slicing(0,nelement-1);
+                TInicioIns = System.nanoTime();
+                listaAUsar.insertionSort();
+                TFinIns = System.nanoTime();
+                tiempoIns = TFinIns - TInicioIns;
+                insertion.add(nelement,tiempoIns);
+            }
+            if(cbQuickSort.isSelected()){
+                listaAUsar = listaDesordenada.slicing(0,nelement-1);
+                TInicioQui = System.nanoTime();
+                listaAUsar.quickSort();
+                TFinQui = System.nanoTime();
+                tiempoQui = TFinQui - TInicioQui;
+                quick.add(nelement,tiempoQui);
+            }
+            if(cbMergeSort.isSelected()){
+                listaAUsar = listaDesordenada.slicing(0,nelement-1);
+                TInicioMer = System.nanoTime();
+                listaAUsar.mergeSort();
+                TFinMer = System.nanoTime();
+                tiempoMer = TFinMer - TInicioMer;
+                merge.add(nelement,tiempoMer);
+            }
+            if(cbStoogeSort.isSelected()){
+                listaAUsar = listaDesordenada.slicing(0,nelement-1);
+                TInicioSto = System.nanoTime();
+                listaAUsar.stoogeSort();
+                TFinSto = System.nanoTime();
+                tiempoSto = TFinSto - TInicioSto;
+                stooge.add(nelement,tiempoSto);
+            }
+        }
+        
+        dataset.addSeries(insertion);
+        dataset.addSeries(quick);
+        dataset.addSeries(merge);
+        dataset.addSeries(stooge);
+        
+        SwingUtilities.invokeLater(() -> {
+        XYLineChart grafica = new XYLineChart("Gráfica", dataset);
+        grafica.setSize(1000, 600);
+        grafica.setLocationRelativeTo(null);
+        grafica.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        grafica.setVisible(true);
+        });
     }
-    
+    //FIN CREACIÓN LAS COORDENADAS XY Y APLICANDO ALGORITMOS
 }
